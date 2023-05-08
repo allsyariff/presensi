@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Presensi Mahasiswa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: aqua;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        form label,
+        form input {
+            margin: 10px;
+        }
+
+        form input[type="submit"] {
+            background-color: aqua;
+            width: 100px;
+
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead th,
+        tbody td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        tbody td {
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Presensi Mahasiswa</h1>
+    <form id="presensiForm">
+        <label for="nama">Nama Mahasiswa:</label>
+        <input type="text" id="nama" name="nama" required>
+        <label for="nim">NIM:</label>
+        <input type="text" id="nim" name="nim" required>
+        <input type="submit" value="Presensi">
+        <input type="button" value="Hapus">
+    </form>
+    <table id="daftarPresensi">
+        <thead>
+            <tr>
+                <th>Nama Mahasiswa</th>
+                <th>NIM</th>
+            </tr>
+        </thead>
+        <tbody id="dataPresensi">
+            <!-- Data presensi mahasiswa akan ditampilkan disini -->
+        </tbody>
+    </table>
+    <script>
+        document.getElementById('presensiForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var nama = document.getElementById('nama').value;
+            var nim = document.getElementById('nim').value;
+            var row = document.createElement('tr');
+            row.innerHTML = '<td>' + nama + '</td><td>' + nim + '</td>';
+            document.getElementById('dataPresensi').appendChild(row);
+            document.getElementById('nama').value = '';
+            document.getElementById('nim').value = '';
+        });
+    </script>
+</body>
+
+</html>
